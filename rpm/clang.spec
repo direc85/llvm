@@ -3,32 +3,20 @@
 %global patch_ver 6
 
 %global clang_tools_binaries \
-	%{_bindir}/clang-apply-replacements \
-	%{_bindir}/clang-change-namespace \
 	%{_bindir}/clang-check \
-	%{_bindir}/clang-doc \
 	%{_bindir}/clang-extdef-mapping \
 	%{_bindir}/clang-format \
-	%{_bindir}/clang-include-fixer \
 	%{_bindir}/clang-linker-wrapper \
-	%{_bindir}/clang-move \
 	%{_bindir}/clang-nvlink-wrapper \
 	%{_bindir}/clang-offload-bundler \
 	%{_bindir}/clang-offload-packager \
 	%{_bindir}/clang-offload-wrapper \
-	%{_bindir}/clang-pseudo \
-	%{_bindir}/clang-query \
 	%{_bindir}/clang-refactor \
-	%{_bindir}/clang-reorder-fields \
 	%{_bindir}/clang-rename \
 	%{_bindir}/clang-repl \
 	%{_bindir}/clang-scan-deps \
-	%{_bindir}/clang-tidy \
-	%{_bindir}/clangd \
 	%{_bindir}/diagtool \
-	%{_bindir}/hmaptool \
-	%{_bindir}/pp-trace \
-	%{_bindir}/run-clang-tidy
+	%{_bindir}/hmaptool
 
 %global clang_binaries \
 	%{_bindir}/clang \
@@ -112,13 +100,6 @@ Requires:	%{name}%{?_isa} = %{version}-%{release}
 
 %description tools-extra
 A set of extra tools built using Clang's tooling API.
-
-%package tools-extra-devel
-Summary: Development header files for clang tools
-Requires: %{name}-tools-extra = %{version}-%{release}
-
-%description tools-extra-devel
-Development header files for clang tools.
 
 
 %prep
@@ -255,14 +236,6 @@ popd
 %files tools-extra
 %{clang_tools_binaries}
 %{_bindir}/c-index-test
-%{_bindir}/find-all-symbols
-%{_bindir}/modularize
 %{_datadir}/clang/clang-format.py*
 %{_datadir}/clang/clang-format-diff.py*
-%{_datadir}/clang/clang-include-fixer.py*
-%{_datadir}/clang/clang-tidy-diff.py*
-%{_datadir}/clang/run-find-all-symbols.py*
 %{_datadir}/clang/clang-rename.py*
-
-%files tools-extra-devel
-%{_includedir}/clang-tidy/
