@@ -3,20 +3,20 @@
 %global patch_ver 6
 
 %global clang_tools_binaries \
+	%{_bindir}/amdgpu-arch \
 	%{_bindir}/clang-check \
 	%{_bindir}/clang-extdef-mapping \
 	%{_bindir}/clang-format \
 	%{_bindir}/clang-linker-wrapper \
-	%{_bindir}/clang-nvlink-wrapper \
 	%{_bindir}/clang-offload-bundler \
 	%{_bindir}/clang-offload-packager \
-	%{_bindir}/clang-offload-wrapper \
 	%{_bindir}/clang-refactor \
 	%{_bindir}/clang-rename \
 	%{_bindir}/clang-repl \
 	%{_bindir}/clang-scan-deps \
 	%{_bindir}/diagtool \
-	%{_bindir}/hmaptool
+	%{_bindir}/hmaptool \
+	%{_bindir}/nvptx-arch
 
 %global clang_binaries \
 	%{_bindir}/clang \
@@ -169,7 +169,12 @@ pushd clang
 mkdir -p %{buildroot}%{python3_sitelib}/clang/
 
 # install scanbuild-py to python sitelib.
+%ifarch aarch64
+mv %{buildroot}%{_prefix}/lib64/{libear,libscanbuild} %{buildroot}%{python3_sitelib}
+%else
 mv %{buildroot}%{_prefix}/lib/{libear,libscanbuild} %{buildroot}%{python3_sitelib}
+%endif
+
 
 # remove editor integrations (bbedit, sublime, emacs, vim)
 rm -vf %{buildroot}%{_datadir}/clang/clang-format-bbedit.applescript
@@ -230,8 +235,8 @@ popd
 %{_libexecdir}/intercept-cc
 %{_datadir}/scan-view/
 %{_datadir}/scan-build/
-%{python3_sitelib}/libear
-%{python3_sitelib}/libscanbuild
+%{python3_sitelib}/libear/
+%{python3_sitelib}/libscanbuild/
 
 %files tools-extra
 %{clang_tools_binaries}
