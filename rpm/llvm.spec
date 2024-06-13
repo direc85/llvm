@@ -55,6 +55,9 @@ LLVM Header files
 %prep
 %autosetup -p1 -n %{name}-%{version}/%{name}
 
+# symlink clang extra tools to enable build
+ln -s ../../clang-tools-extra clang/tools/extra || :
+
 %build
 pushd llvm
 
