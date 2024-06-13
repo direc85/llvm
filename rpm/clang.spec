@@ -153,7 +153,7 @@ pushd build
 %endif
 	-DCLANG_INCLUDE_TESTS:BOOL=OFF \
 	-DLLVM_MAIN_SRC_DIR=%{_datadir}/llvm/src \
-%ifarch aarch64
+%if 0%{?__isa_bits} == 64
 	-DLLVM_LIBDIR_SUFFIX=64 \
 %else
 	-DLLVM_LIBDIR_SUFFIX= \
