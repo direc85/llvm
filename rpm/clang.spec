@@ -1,6 +1,6 @@
-%global maj_ver 15
-%global min_ver 0
-%global patch_ver 7
+%global maj_ver 18
+%global min_ver 1
+%global patch_ver 8
 
 %global clang_tools_binaries \
 	%{_bindir}/clang-apply-replacements \
