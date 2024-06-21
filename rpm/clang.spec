@@ -3,19 +3,19 @@
 %global patch_ver 8
 
 %global clang_tools_binaries \
+	%{_bindir}/amdgpu-arch \
 	%{_bindir}/clang-apply-replacements \
 	%{_bindir}/clang-change-namespace \
 	%{_bindir}/clang-check \
 	%{_bindir}/clang-doc \
 	%{_bindir}/clang-extdef-mapping \
 	%{_bindir}/clang-format \
+	%{_bindir}/clang-include-cleaner \
 	%{_bindir}/clang-include-fixer \
 	%{_bindir}/clang-linker-wrapper \
 	%{_bindir}/clang-move \
-	%{_bindir}/clang-nvlink-wrapper \
 	%{_bindir}/clang-offload-bundler \
 	%{_bindir}/clang-offload-packager \
-	%{_bindir}/clang-offload-wrapper \
 	%{_bindir}/clang-pseudo \
 	%{_bindir}/clang-query \
 	%{_bindir}/clang-refactor \
@@ -27,6 +27,7 @@
 	%{_bindir}/clangd \
 	%{_bindir}/diagtool \
 	%{_bindir}/hmaptool \
+	%{_bindir}/nvptx-arch \
 	%{_bindir}/pp-trace \
 	%{_bindir}/run-clang-tidy
 
